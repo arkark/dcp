@@ -1,6 +1,10 @@
 dcp
 ===
 
+[![Build Status](https://travis-ci.com/ArkArk/dcp.svg?branch=master)](https://travis-ci.com/ArkArk/dcp)
+[![license: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://github.com/ArkArk/dcp/blob/master/LICENSE)
+[![GitHub version](https://badge.fury.io/gh/arkark%2Fdcp.svg)](https://badge.fury.io/gh/arkark%2Fdcp)
+
 An alias of `docker container cp` and useful completions.
 
 ```sh
