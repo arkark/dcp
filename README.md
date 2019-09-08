@@ -52,3 +52,7 @@ $ sudo curl -L https://raw.githubusercontent.com/ArkArk/dcp/master/completion/dc
 - [x] bash
 - [ ] zsh
 - [ ] fish
+
+## License
+
+[MIT](https://github.com/ArkArk/dcp/blob/master/LICENSE)
