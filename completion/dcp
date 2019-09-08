@@ -1,0 +1,20 @@
+#! /bin/bash
+
+_dcp_bash_autocomplete() {
+  if [[ "${COMP_WORDS[0]}" != "source" ]]; then
+    local cur opts
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    opts=$(                            \
+      ${COMP_WORDS[0]}                 \
+      --completion-line="$COMP_LINE"   \
+      --completion-point="$COMP_POINT" \
+      --completion-current="$cur"      \
+      --generate-bash-completion       \
+    )
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    __ltrim_colon_completions "$cur"
+    return 0
+  fi
+}
+
+complete -o nospace -F _dcp_bash_autocomplete dcp
