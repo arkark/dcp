@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"os/exec"
 	"strings"
 
 	"github.com/ArkArk/dcp/internal/comp"
@@ -96,14 +95,19 @@ func completeContainerPaths(argContainer string, argPath string, completion comp
 		argDir = "/" + argDir
 	}
 
-	out, err := exec.Command("docker", "container", "exec", argContainer, "ls", "-p", argDir).CombinedOutput()
+	result, err := docker.Exec(argContainer, []string{"ls", "-p", argDir})
 
 	if err != nil {
 		logger.Write(logger.WARN, "%#v", err)
 		return
 	}
+	if result.ExitCode != 0 {
+		logger.Write(logger.DEBUG, "%#v", result)
+		logger.Write(logger.ERROR, "%#v", result.Stderr)
+		return
+	}
 
-	for _, file := range strings.Fields(string(out)) {
+	for _, file := range strings.Fields(result.Stdout) {
 		path := fmt.Sprintf("%s%s", argDir[1:], file)
 		if completion.Current == ":" {
 			path = ":" + path
