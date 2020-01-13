@@ -10,7 +10,7 @@ import (
 	"github.com/ArkArk/dcp/internal/docker"
 	"github.com/ArkArk/dcp/internal/logger"
 	"github.com/ArkArk/dcp/internal/util"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 )
 
 func getBashComplete() cli.BashCompleteFunc {

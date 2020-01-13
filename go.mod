@@ -13,7 +13,7 @@ require (
 	github.com/opencontainers/image-spec v1.0.1 // indirect
 	github.com/pkg/errors v0.9.0 // indirect
 	github.com/sirupsen/logrus v1.4.2 // indirect
-	github.com/urfave/cli v1.21.0
+	github.com/urfave/cli/v2 v2.1.1
 	google.golang.org/grpc v1.26.0 // indirect
 )
 

@@ -2,7 +2,7 @@ package comp
 
 import (
 	"github.com/ArkArk/dcp/internal/logger"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 )
 
 type Completion struct {
@@ -13,15 +13,15 @@ type Completion struct {
 
 func GetFlags() []cli.Flag {
 	return []cli.Flag{
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "completion-line",
 			Hidden: true,
 		},
-		cli.IntFlag{
+		&cli.IntFlag{
 			Name:   "completion-point",
 			Hidden: true,
 		},
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "completion-current",
 			Hidden: true,
 		},
