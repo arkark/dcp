@@ -1,0 +1,21 @@
+version: "3.7"
+
+# Containers for debug
+
+services:
+  hoge:
+    image: alpine:3.10.2
+    container_name: hoge
+    command: tail -F nothing
+  fuga:
+    image: alpine:3.10.2
+    container_name: fuga
+    command: tail -F nothing
+  foo:
+    image: alpine:3.10.2
+    container_name: foo
+    command: tail -F nothing
+  bar:
+    image: alpine:3.10.2
+    container_name: bar
+    command: tail -F nothing

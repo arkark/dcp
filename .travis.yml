@@ -1,0 +1,25 @@
+language: go
+
+go:
+  - 1.13.x
+cache:
+  directories:
+    - $HOME/.cache/go-build
+    - $HOME/gopath/pkg/mod
+env:
+  - VERSION_FILE="internal/version/version.go"
+
+script:
+  - go build -tags=debug
+  - go test ./...
+  - sed -i -e "s/{{VERSION}}/$(git describe --abbrev=0 --tags)/g" $VERSION_FILE
+  - go build
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  target-branch: go1
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    tags: true
