@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/ArkArk/dcp/internal/logger"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 )
 
 func getAction() cli.ActionFunc {

@@ -2,27 +2,31 @@ package app
 
 import (
 	"github.com/ArkArk/dcp/internal/comp"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 )
 
 func getFlags() []cli.Flag {
-	cli.VersionFlag = cli.BoolFlag{
-		Name:  "v, version", // not "version, v"
-		Usage: "Print the version",
+	cli.VersionFlag = &cli.BoolFlag{
+		Name:    "version",
+		Aliases: []string{"v"},
+		Usage:   "Print the version",
 	}
 
 	appFlags := []cli.Flag{
-		cli.BoolFlag{
-			Name:  "a, archive",
-			Usage: "Archive mode (copy all uid/gid information)",
+		&cli.BoolFlag{
+			Name:    "archive",
+			Aliases: []string{"a"},
+			Usage:   "Archive mode (copy all uid/gid information)",
 		},
-		cli.BoolFlag{
-			Name:  "L, follow-link",
-			Usage: "Always follow symbol link in SRC_PATH",
+		&cli.BoolFlag{
+			Name:    "follow-link",
+			Aliases: []string{"L"},
+			Usage:   "Always follow symbol link in SRC_PATH",
 		},
-		cli.BoolFlag{
-			Name:  "h, help",
-			Usage: "Print this help message",
+		&cli.BoolFlag{
+			Name:    "help",
+			Aliases: []string{"h"},
+			Usage:   "Print this help message",
 		},
 	}
 	return append(appFlags, comp.GetFlags()...)

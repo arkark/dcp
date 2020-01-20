@@ -42,13 +42,13 @@ $ go get -u github.com/ArkArk/dcp
 #### Linux
 
 ```sh
-$ sudo curl -L https://raw.githubusercontent.com/ArkArk/dcp/master/completion/dcp -o /etc/bash_completion.d/dcp
+$ sudo curl -L https://raw.githubusercontent.com/ArkArk/dcp/go1/completion/dcp -o /etc/bash_completion.d/dcp
 ```
 
 #### Mac
 
 ```sh
-$ sudo curl -L https://raw.githubusercontent.com/ArkArk/dcp/master/completion/dcp -o /usr/local/etc/bash_completion.d/dcp
+$ sudo curl -L https://raw.githubusercontent.com/ArkArk/dcp/go1/completion/dcp -o /usr/local/etc/bash_completion.d/dcp
 ```
 
 ## Supported shells

@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"os/exec"
 	"strings"
 
 	"github.com/ArkArk/dcp/internal/comp"
+	"github.com/ArkArk/dcp/internal/docker"
 	"github.com/ArkArk/dcp/internal/logger"
 	"github.com/ArkArk/dcp/internal/util"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 )
 
 func getBashComplete() cli.BashCompleteFunc {
@@ -20,7 +20,7 @@ func getBashComplete() cli.BashCompleteFunc {
 		arg := currentArg(completion)
 		logger.Write(logger.DEBUG, "currentArg: %#v", arg)
 
-		containers, err := runningContainers()
+		containers, err := runningContainerNames()
 		if err != nil {
 			logger.Write(logger.ERROR, "%#v", err)
 			os.Exit(1)
@@ -95,14 +95,19 @@ func completeContainerPaths(argContainer string, argPath string, completion comp
 		argDir = "/" + argDir
 	}
 
-	out, err := exec.Command("docker", "container", "exec", argContainer, "ls", "-p", argDir).CombinedOutput()
+	result, err := docker.Exec(argContainer, []string{"ls", "-p", argDir})
 
 	if err != nil {
 		logger.Write(logger.WARN, "%#v", err)
 		return
 	}
+	if result.ExitCode != 0 {
+		logger.Write(logger.DEBUG, "%#v", result)
+		logger.Write(logger.ERROR, "%#v", result.Stderr)
+		return
+	}
 
-	for _, file := range strings.Fields(string(out)) {
+	for _, file := range strings.Fields(result.Stdout) {
 		path := fmt.Sprintf("%s%s", argDir[1:], file)
 		if completion.Current == ":" {
 			path = ":" + path
@@ -143,22 +148,21 @@ func splitPath(path string) (dir, file string) {
 	return
 }
 
-func runningContainers() ([]string, error) {
-	out, err := exec.Command("docker", "ps", `--format="{{.Names}}"`).CombinedOutput()
-
+func runningContainerNames() ([]string, error) {
+	containers, err := docker.ContainerList()
 	if err != nil {
-		return []string{}, err
+		return nil, err
 	}
 
-	containers := []string{}
-	for _, c := range strings.Fields(string(out)) {
-		if len(c) >= 2 && c[0] == '"' && c[len(c)-1] == '"' {
-			// Remove double quotes
-			c = c[1 : len(c)-1]
+	var containerNames []string
+	for _, container := range containers {
+		for _, name := range container.Names {
+			// E.g. name == "/foo"
+			containerNames = append(containerNames, name[1:])
 		}
-		containers = append(containers, c)
 	}
-	return containers, nil
+
+	return containerNames, nil
 }
 
 func currentArg(completion comp.Completion) string {
