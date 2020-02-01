@@ -1,8 +1,8 @@
 dcp
 ===
 
-[![Build Status](https://travis-ci.com/ArkArk/dcp.svg?branch=master)](https://travis-ci.com/ArkArk/dcp)
-[![license: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://github.com/ArkArk/dcp/blob/master/LICENSE)
+[![Build Status](https://travis-ci.com/arkark/dcp.svg?branch=master)](https://travis-ci.com/arkark/dcp)
+[![license: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://github.com/arkark/dcp/blob/master/LICENSE)
 [![GitHub version](https://badge.fury.io/gh/arkark%2Fdcp.svg)](https://badge.fury.io/gh/arkark%2Fdcp)
 
 An alias of `docker container cp` and useful completions.
@@ -34,7 +34,7 @@ $ cat alpine-release
 ### Binary
 
 ```sh
-$ go get -u github.com/ArkArk/dcp
+$ go get -u github.com/arkark/dcp
 ```
 
 ### Completion
@@ -42,13 +42,13 @@ $ go get -u github.com/ArkArk/dcp
 #### Linux
 
 ```sh
-$ sudo curl -L https://raw.githubusercontent.com/ArkArk/dcp/go1/completion/dcp -o /etc/bash_completion.d/dcp
+$ sudo curl -L https://raw.githubusercontent.com/arkark/dcp/go1/completion/dcp -o /etc/bash_completion.d/dcp
 ```
 
 #### Mac
 
 ```sh
-$ sudo curl -L https://raw.githubusercontent.com/ArkArk/dcp/go1/completion/dcp -o /usr/local/etc/bash_completion.d/dcp
+$ sudo curl -L https://raw.githubusercontent.com/arkark/dcp/go1/completion/dcp -o /usr/local/etc/bash_completion.d/dcp
 ```
 
 ## Supported shells
@@ -59,4 +59,4 @@ $ sudo curl -L https://raw.githubusercontent.com/ArkArk/dcp/go1/completion/dcp -
 
 ## License
 
-[MIT](https://github.com/ArkArk/dcp/blob/master/LICENSE)
+[MIT](https://github.com/arkark/dcp/blob/master/LICENSE)

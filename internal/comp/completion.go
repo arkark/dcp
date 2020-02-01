@@ -1,7 +1,7 @@
 package comp
 
 import (
-	"github.com/ArkArk/dcp/internal/logger"
+	"github.com/arkark/dcp/internal/logger"
 	"github.com/urfave/cli/v2"
 )
 
