@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/ArkArk/dcp/internal/version"
+	"github.com/arkark/dcp/internal/version"
 	"github.com/urfave/cli/v2"
 )
 

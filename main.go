@@ -4,8 +4,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/ArkArk/dcp/internal/app"
-	"github.com/ArkArk/dcp/internal/logger"
+	"github.com/arkark/dcp/internal/app"
+	"github.com/arkark/dcp/internal/logger"
 )
 
 func main() {

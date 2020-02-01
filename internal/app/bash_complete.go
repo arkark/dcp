@@ -6,10 +6,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ArkArk/dcp/internal/comp"
-	"github.com/ArkArk/dcp/internal/docker"
-	"github.com/ArkArk/dcp/internal/logger"
-	"github.com/ArkArk/dcp/internal/util"
+	"github.com/arkark/dcp/internal/comp"
+	"github.com/arkark/dcp/internal/docker"
+	"github.com/arkark/dcp/internal/logger"
+	"github.com/arkark/dcp/internal/util"
 	"github.com/urfave/cli/v2"
 )
 

@@ -1,4 +1,4 @@
-module github.com/ArkArk/dcp
+module github.com/arkark/dcp
 
 go 1.13
 
